@@ -113,5 +113,5 @@ El proyecto se organiza en tres etapas: análisis inicial, ejecución técnica d
 <div align="center">
   <img src="img/planificacion.png" alt="Diagrama de Gantt del Proyecto" width="100%">
   <br>
-  <em>Figura 1: Planificación detallada del SPRINT 1</em>
+  <em>Figura 1: Planificación detallada</em>
 </div>
