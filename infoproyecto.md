@@ -1,10 +1,9 @@
 <div align="center">
 
-# 🚀 Proyecto Intermodular: Modernización de Red Escolar
+# 🚀 Proyecto Intermodular: Mejora Red Escolar (Radar Escolar)
 
 ![Status](https://img.shields.io/badge/Estado-En_Desarrollo-yellow?style=for-the-badge)
 ![Curso](https://img.shields.io/badge/Curso-2%C2%BA_ASIR-blue?style=for-the-badge)
-![Sprint](https://img.shields.io/badge/Sprint-1-green?style=for-the-badge)
 
 </div>
 
@@ -12,10 +11,10 @@
 
 ### 👥 Equipo de Trabajo
 
-| Integrante | Rol |
-| :--- | :--- |
-| **Adrián Gil Alemán** | Administración de Sistemas |
-| **Magdiel Novoa Suárez** | Redes y Seguridad |
+| Integrante |
+| :--- |
+| **Adrián Gil Alemán** |
+| **Magdiel Novoa Suárez** |
 
 ---
 
