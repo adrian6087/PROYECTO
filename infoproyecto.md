@@ -20,16 +20,16 @@
 
 ## 📑 Índice
 
-1. [🎯 Propuesta inicial](#-propuesta-inicial)
-2. [⚠️ Explicación del problema](#-explicación-del-problema-detectado)
-3. [🏆 Objetivos del proyecto](#-objetivos-del-proyecto)
-4. [🛠️ Tecnologías seleccionadas](#-tecnologías-seleccionadas)
-5. [🏗️ Arquitectura prevista](#-arquitectura-prevista)
-6. [📅 Planificación temporal](#-planificación-temporal)
+1. [🎯 Propuesta inicial](#propuesta)
+2. [⚠️ Explicación del problema](#problema)
+3. [🏆 Objetivos del proyecto](#objetivos)
+4. [🛠️ Tecnologías seleccionadas](#tecnologias)
+5. [🏗️ Arquitectura prevista](#arquitectura)
+6. [📅 Planificación temporal](#planificacion)
 
 ---
 
-## 🎯 Propuesta inicial
+## <a id="propuesta"></a>🎯 Propuesta inicial
 
 El presente proyecto tiene como finalidad modernizar la gestión de la red del centro educativo mediante una infraestructura virtualizada basada en software de código abierto.
 
@@ -47,7 +47,7 @@ En definitiva, el proyecto busca implementar una solución escalable, segura y d
 
 ---
 
-## ⚠️ Explicación del problema detectado
+## <a id="problema"></a>⚠️ Explicación del problema detectado
 
 La infraestructura de red actual presenta deficiencias críticas de visibilidad. La problemática se divide en dos vectores principales:
 
@@ -60,7 +60,7 @@ La infraestructura de red actual presenta deficiencias críticas de visibilidad.
 
 ---
 
-## 🏆 Objetivos del proyecto
+## <a id="objetivos"></a>🏆 Objetivos del proyecto
 
 Diseñar e implementar un sistema de monitorización y seguridad perimetral virtualizado sobre Proxmox VE, utilizando pfSense para asegurar la disponibilidad del ancho de banda y garantizar la identificación inequívoca de los dispositivos.
 
@@ -73,7 +73,7 @@ Diseñar e implementar un sistema de monitorización y seguridad perimetral virt
 
 ---
 
-## 🛠️ Tecnologías seleccionadas
+## <a id="tecnologias"></a>🛠️ Tecnologías seleccionadas
 
 Pila tecnológica de **Software Libre (Open Source)** para garantizar auditabilidad y coste cero:
 
@@ -93,18 +93,18 @@ Pila tecnológica de **Software Libre (Open Source)** para garantizar auditabili
 
 ---
 
-## 🏗️ Arquitectura prevista
+## <a id="arquitectura"></a>🏗️ Arquitectura prevista
 
 El diseño sigue un modelo de virtualización sobre hardware físico en 4 capas:
 
-1.  **🖥️ Capa de Hardware (Host):** Servidor físico con virtualización (VT-x/AMD-V) y doble NIC (WAN/LAN).
+1.  **🖥️ Capa de Hardware (Host):** Servidor físico con virtualización (VT-x/AMD-V) y doble interfaz de red (NIC) para separar el tráfico WAN (Internet) del tráfico LAN (Red Escolar).
 2.  **🎛️ Capa de Virtualización (Hipervisor):** **Proxmox VE** instalado en bare-metal gestionando CPU/RAM.
 3.  **☁️ Capa de Máquina Virtual (Guest):** MV con **pfSense** utilizando *PCI Passthrough* o *Linux Bridges* para interceptar tráfico.
 4.  **📈 Capa de Aplicación:** Servicios internos de **ntopng** y scripts de diagnóstico.
 
 ---
 
-## 📅 Planificación temporal
+## <a id="planificacion"></a>📅 Planificación temporal
 
 El proyecto se organiza en tres etapas: análisis inicial, ejecución técnica durante las prácticas, y cierre/documentación.
 
