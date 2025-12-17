@@ -10,16 +10,13 @@
 
 ## Índice
 
-| Sección | Página |
-| :--- | :--- |
-| Propuesta inicial | 3 |
-| Explicación del problema detectado | 3 |
-| Objetivos del proyecto | 4 |
-| Tecnologías seleccionadas | 4 |
-| Arquitectura prevista | 5 |
-| Planificación temporal | 5 |
+1. [Propuesta inicial](#propuesta-inicial)
+2. [Explicación del problema detectado](#explicación-del-problema-detectado)
+3. [Objetivos del proyecto](#objetivos-del-proyecto)
+4. [Tecnologías seleccionadas](#tecnologías-seleccionadas)
+5. [Arquitectura prevista](#arquitectura-prevista)
+6. [Planificación temporal](#planificación-temporal)
 
----
 
 ## Propuesta inicial
 
