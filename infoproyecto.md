@@ -81,8 +81,8 @@ Pila tecnológica de **Software Libre (Open Source)** para garantizar auditabili
 
 ![Proxmox](https://img.shields.io/badge/Proxmox_VE-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
 ![pfSense](https://img.shields.io/badge/pfSense-2C3E50?style=for-the-badge&logo=pfsense&logoColor=white)
-![ntopng](https://img.shields.io/badge/ntopng-Monitoring-blue?style=for-the-badge)
-![Nmap](https://img.shields.io/badge/Nmap-Security-green?style=for-the-badge)
+![ntopng](https://img.shields.io/badge/ntopng-Monitoreo-blue?style=for-the-badge)
+![Nmap](https://img.shields.io/badge/Nmap-Seguridad-green?style=for-the-badge)
 
 </div>
 
