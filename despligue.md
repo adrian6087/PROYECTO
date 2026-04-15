@@ -1,6 +1,6 @@
 # Reporte de Despliegue: Proyecto de Monitorización y Seguridad en Red Escolar
 
-**Autores:** Equipo de Administración de Redes
+**Autores:** Equipo de Administración de Redes (Magdiel & Adrian)
 **Entorno de Laboratorio:** Proxmox VE (Nested), pfSense 2.4.5, Contenedores LXC.
 
 ---
