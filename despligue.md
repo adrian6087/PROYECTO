@@ -64,10 +64,17 @@ El objetivo era localizar en qué IP dinámica se escondía la máquina infectad
 2. pfSense mantiene un registro en tiempo real de quién está "hablando" en la red. Simplemente usamos el buscador del navegador (`Ctrl + F`) para buscar la MAC específica que le habíamos asignado al equipo con el virus en Proxmox.
 3. Inmediatamente ubicamos la fila correspondiente, revelando qué IP dinámica le había asignado el servidor DHCP en ese exacto momento, lo que nos da el objetivo claro para bloquearle el internet.
 
-![Captura de la Tabla ARP en pfSense mostrando la MAC y la IP del equipo infectado]()
+<div align="center">
+  <img src="img/ARP TABLE.png" alt="Diagrama de Gantt del Proyecto" width="100%">
+  <br>
+  <em>Figura 1: Tabla ARP en pfSense mostrando la MAC y la IP del equipo infectado </em>
+</div>
 
 ### Escenario B: Detección del "Cuello de Botella" (Traffic Graph)
 Inicialmente pensábamos usar Nmap, pero como confirmamos que no analiza flujos de descarga en vivo, y no pudimos instalar `ntopng` por la versión antigua del pfSense, acudimos al "Radar" nativo del firewall.
 
-![Captura de la Tabla Traffic en pfSense el consumo por equipos]()
-
+<div align="center">
+  <img src="img/TRAFFIC TABLE.png" alt="Diagrama de Gantt del Proyecto" width="100%">
+  <br>
+  <em>Figura 2: Tabla Traffico en pfSense el consumo por equipos </em>
+</div>
