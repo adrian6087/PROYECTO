@@ -1,13 +1,12 @@
 # 5.2 SERVICIO DE DIRECTORIO DE LINUX
 
-1. [Dominios] (# DOMINIOS)
-2. LDAP
-3. Instalar y configurar
-4. Añadir cliente en OpenLDAP
-5. Dominios Samba
-6. Configurar Samba
-7. Comprobar dominio Samba
-
+1. [Dominios](#dominios)
+2. [LDAP](#ldap)
+3. [Instalar y configurar](#instalar-y-configurar)
+4. [Añadir cliente en OpenLDAP](#añadir-cliente-en-openldap)
+5. [Dominios Samba](#dominios-samba)
+6. [Configurar Samba](#configurar-samba)
+7. [Comprobar dominio Samba](#comprobar-dominio-samba)
 ![1.png](imagenes/1.png)
 
 # DOMINIOS
