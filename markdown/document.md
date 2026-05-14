@@ -160,43 +160,9 @@ Estos archivos contienen instrucciones para crear, modificar o eliminar entradas
 
 Su importancia radica en que permite trabajar con LDAP de forma reproducible y automatizable, algo esencial en entornos profesionales. Gracias a LDIF, es posible versionar cambios, reutilizar configuraciones y aplicar modificaciones de forma controlada.
 
-```txt
-dn: cn=John Doe,ou=Usuarios,dc=miempresa,dc=com
-objectClass: person
-cn: John Doe
-sn: Doe
-```
+![8.png](imagenes/8.png)
 
-```txt
-dn: dc=yeraym,dc=asir
-objectClass: top
-objectClass: dcObject
-objectClass: organization
-b: yeraym.asir
-dc: yeraym
-structuralObjectClass: organization
-entryUUID: b20ff03c-b561-103b-8b8b-6379bf4b2900
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 202109291111102
-entryCSN: 20210929111110.477265Z#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 202109291111102
-```
-
-```txt
-dn: cn=admin,dc=yeraym,dc=asir
-objectClass: simpleSecurityObject
-objectClass: organizationalRole
-cn: admin
-Description: LDAP administrator
-userPassword:: e|NTSEF946|yeHVMc4|DNUczM2VsY3BLVVRzMndJUGNFRH2vbUY=
-structuralObjectClass: organizationalRole
-entryUUID: b2109906-b561-103b-8b8c-6379bf4b2900
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 202109291111102
-entryCSN: 20210929111110.481603Z#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 202109291111102
+![9.png](imagenes/9.png)
 
 # LDAP
 
@@ -207,7 +173,7 @@ Nadie “instala HTTP”; se instalan servidores web como Apache o Nginx que usa
 ☐ Un servidor LDAP, normalmente OpenLDAP (implementación concreta de ese protocolo)
 ☐ Y/o clientes LDAP (herramientas que hablan el protocolo LDAP)
 
-![chunk-0-img-7.jpeg](chunk-0-img-7.jpeg)
+![10.png](imagenes/10.png)
 
 # OPENLDAP
 
@@ -219,7 +185,7 @@ OpenLDAP es un software de código abierto y multiplataforma que implementa el p
 
 https://www.openldap.org/
 
-![chunk-0-img-8.jpeg](chunk-0-img-8.jpeg)
+![11.png](imagenes/11.png)
 
 # LDAP
 
@@ -236,32 +202,31 @@ https://www.openldap.org/
 |  ldapurl | Convierte una URL LDAP en un nombre de objeto LDAP.  |
 |  ldapschema | Obtiene el esquema de un servidor LDAP.  |
 
-# INSTALAR Y CONFIGURAR
 
 Instalaremos los siguientes paquetes:
 
 - slapd: Representa el servidor LDAP en el proyecto OpenLDAP.
 - ldap-utils: Contiene herramientas de línea de comandos que te permiten interactuar con servidores LDAP, realizar búsquedas, administrar entradas, entre otras operaciones.
-
-dpkg-reconfigure slapd: Cuando ejecutas este comando en la terminal, se abrirá un asistente interactivo que te guiará a través de la configuración del servidor LDAP. Este te hará una serie de preguntas relacionadas con la configuración del servidor, como el nombre del dominio, la contraseña de administrador, el tipo de backend de base de datos (por ejemplo, HDB o BDB), entre otros aspectos.
-
+  
 ```
 :~# apt install slapd ldap-utils
 ```
 
+dpkg-reconfigure slapd: Cuando ejecutas este comando en la terminal, se abrirá un asistente interactivo que te guiará a través de la configuración del servidor LDAP. Este te hará una serie de preguntas relacionadas con la configuración del servidor, como el nombre del dominio, la contraseña de administrador, el tipo de backend de base de datos (por ejemplo, HDB o BDB), entre otros aspectos.
+
+
+
 ```
 :~# dpkg-reconfigure slapd
-
-# INSTALAR Y CONFIGURAR
+```
 
 El archivo de configuración /etc/ldap/ldap.conf permite definir parámetros globales para las interacciones LDAP en el sistema.
 
 ☐ BASE: La base de búsqueda predeterminada para las consultas LDAP. (dc)
 ☐ URI: La URL del servidor LDAP al que se conectará el sistema.
 
-![chunk-0-img-9.jpeg](chunk-0-img-9.jpeg)
+![14.png](imagenes/14.png)
 
-# INSTALAR Y CONFIGURAR
 
 El comando slapcat es una herramienta de línea de comandos utilizada en sistemas con OpenLDAP para exportar contenido de la base de datos del servidor LDAP en formato LDIF. Opciones:
 
@@ -269,56 +234,18 @@ El comando slapcat es una herramienta de línea de comandos utilizada en sistema
 
 ☐ -f archivo: Utiliza un archivo de configuración alternativo.
 
-![chunk-0-img-10.jpeg](chunk-0-img-10.jpeg)
+![15.png](imagenes/15.png)
 
-```txt
-dn: dc=yeraym,dc=asir
-objectClass: top
-objectClass: dcObject
-objectClass: organization
-c: yeraym.asir
-dc: yeraym
-structuralObjectClass: organization
-entryUUID: b20ff03c-b561-103b-8b8b-6379bf4b2900
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 20210929111110Z
-entryCSN: 20210929111110.4772652#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 20210929111110Z
-```
+![16.png](imagenes/16.png)
 
-```txt
-dn: cn=admin,dc=yeraym,dc=asir
-objectClass: simpleSecurityObject
-objectClass: organizationalRole
-cn: admin
-description: LDAP administrator
-userPassword:: e1NTSEF9WKUyeHVMcWIDNUczM2VsY3BLVVRzMndJUGNFRH2vbUY=
-structuralObjectClass: organizationalRole
-entryUUID: b2109906-b561-103b-8b8c-6379bf4b2900
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 20210929111110Z
-entryCSN: 20210929111110.4816032#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 20210929111110Z
-
-# INSTALAR Y CONFIGURAR
 
 El siguiente paso consistirá en comenzar a incluir contenido. Como cabe esperar, lo primero que debemos hacer es configurar la estructura básica del directorio. Es decir, debemos crear la estructura jerárquica del árbol (DIT – Directory Information Tree). Para este caso es yeraym.asir
 
-![chunk-0-img-11.jpeg](chunk-0-img-11.jpeg)
+![17.png](imagenes/17.png)
 
 A continuación, se muestra un archivo LDIF que define la estructura de dos unidades organizativas (OU). Este archivo se utilizará con el comando ldapadd para añadir dichas unidades organizativas a la estructura del dominio dentro del directorio LDAP.
 
-```txt
-dn: ou=alumnado,dc=yeraym,dc=asir
-objectClass: organizationalUnit
-ou: alumnado
-dn: ou=profesorado,dc=yeraym,dc=asir
-objectClass: organizationalUnit
-ou: profesorado
-
-# INSTALAR Y CONFIGURAR
+![18.png](imagenes/18.png)
 
 A continuación, añadir la información a la base de datos OpenLDAP. Esto se hace con el comando ldapadd:
 
@@ -327,174 +254,34 @@ A continuación, añadir la información a la base de datos OpenLDAP. Esto se ha
 - ☐ -W pide la contraseña de forma interactiva.
 - ☐ -f fichero a cargar. En este caso: estructura base.ldif
 
-```shell
-root@yeraymubuser22:~# ldapadd -x -D cn=admin,dc=yeraym,dc=asir -W -f base.ldif
-Enter LDAP Password:
-adding new entry "ou=alumnado,dc=yeraym,dc=asir"
-adding new entry "ou=profesorado,dc=yeraym,dc=asir"
-root@yeraymubuser22:~#
-
-# INSTALAR Y CONFIGURAR
+![19.png](imagenes/19.png)
 
 A continuación, añadimos algunos usuarios más:
 
-```txt
-@n: ou=yeraymalu08,dc=yeraym,dc=asir
-@objectClass: inetOrgPerson
-@objectClass: posixAccount
-@objectClass: shadowAccount
-@uid: yeraymalu08
-@sn: Moreno
-@givenName: Yeray
-@gn: yeray01
-@displayName: yeray
-@uidNumber: 10008
-@uidNumber: 10000
-@userPassword: 12345
-@gecos: yeray
-@LoginShell: /bin/bash
-@homeDirectory: /home/yeraymalu01
-@shadowExpire: -1
-@shadowFlag: 0
-@shadowWarning: ?
-@shadowMin: 8
-@shadowMax: 999999
-@shadowLastChange: 10877
-@mail: yeray.moreno@cifpviliadeaguimes.es
-@nostalCode: 35220
-@s: asir
-@initials: YM
-```
-
-```shell
-root@yeraymubuser22:"# ldapadd -x -D cn=admin,dc=yeraym,dc=asir -W -f alumnado.ldif
-Enter LDAP Password:
-adding new entry "ou=yeraymalu01,dc=yeraym,dc=asir"
-adding new entry "ou=yeraymalu02,dc=yeraym,dc=asir"
-adding new entry "ou=yeraymalu03,dc=yeraym,dc=asir"
-adding new entry "ou=yeraymalu04,dc=yeraym,dc=asir"
-
-# INSTALAR Y CONFIGURAR
+![20.png](imagenes/20.png)
+![21.png](imagenes/21.png)
 
 ## Comprobaciones:
 
-```txt
-dn: ou=alumnado,dc=yeraym,dc=asir
-objectClass: organizationalUnit
-ou: alumnado
-structuralObjectClass: organizationalUnit
-entryUUID: 3387c536-b562-103b-85d3-bb7e73e698b5
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 202109291114472
-entryCSN: 20210929111447.6886832#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 202109291114472
-```
-
-```txt
-dn: ou=profesorado,dc=yeraym,dc=asir
-objectClass: organizationalUnit
-ou: profesorado
-structuralObjectClass: organizationalUnit
-entryUUID: 33891f80-b562-103b-85d4-bb7e73e698b5
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 202109291114472
-entryCSN: 20210929111447.6975662#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 202109291114472
-```
-
-```txt
-dn: ou=yeraymalu01,dc=yeraym,dc=asir
-objectClass: inetOrgPerson
-objectClass: posixAccount
-uid: yeraymalu01
-sn: Moreno
-cn: yeray01
-uidNumber: 10001
-homeDirectory: /home/yeraymalu01
-structuralObjectClass: inetOrgPerson
-ou: yeraymalu01
-entryUUID: 2c7a0e1a-b563-103b-85d5-bb7e73e698b5
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 202109291121452
-gidNumber: 501
-entryCSN: 20210929120620.3468452#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 202109291206202
-```
-
-```txt
-dn: ou=yeraymalu02,dc=yeraym,dc=asir
-objectClass: inetOrgPerson
-objectClass: posixAccount
-uid: yeraymalu02
-sn: Moreno
-cn: yeray02
-uidNumber: 10002
-gidNumber: 10000
-homeDirectory: /home/yeraymalu02
-structuralObjectClass: inetOrgPerson
-ou: yeraymalu02
-entryUUID: 2c7ba842-b563-103b-85d6-bb7e73e698b5
-creatorsName: cn=admin,dc=yeraym,dc=asir
-createTimestamp: 202109291121452
-entryCSN: 20210929112145.3619952#000000#000#000000
-modifiersName: cn=admin,dc=yeraym,dc=asir
-modifyTimestamp: 202109291121452
-
-# INSTALAR Y CONFIGURAR
+![22.png](imagenes/22.png)
+![23.png](imagenes/23.png)
 
 ldapmodify: permite añadir entradas o realizar modificaciones. Posibilita modificar entradas de un directorio LDAP aceptando la introducción de datos a través de un fichero o de la línea de comandos si no se especifica.
 
-```txt
-dn: uid=aluyeraym01,ou=asir2,dc=yeraym,dc=asir
-changetype: modify
-add: mail
-mail:yeray.moreno@cifpvilladeaguimes.es
-```
+![24.png](imagenes/24.png)
 
-```txt
-root@yeraymUbuser21:~# ldapmodify -x -D 'cn=admin,dc=yeraym,dc=asir' -W -f modifica.ldif
-Enter LDAP Password:
-modifying entry "uid=aluyeraym01,ou=asir2,dc=yeraym,dc=asir"
-```
-
-# INSTALAR Y CONFIGURAR
+![25.png](imagenes/25.png)
 
 ldapsearch: realiza consultas. Por ejemplo, a continuación, se muestran los nombres comunes y los correos de todos los usuarios del dominio:
 
 - `-L` → salida en formato LDIF / `-LL` → elimina comentarios / `-LLL` → elimina también las líneas en blanco
 - `-b` → define desde dónde buscar (Base DN)
 
-```txt
-root@yeraymUbuser21:"# ldapsearch -xLLL -b "dc=yeraym,dc=asir" "uid=*" cn mail
-dn: uid=aluyeraym01,ou=asir2,dc=yeraym,dc=asir
-cn: Yeray Asir
-mail: yeray.moreno@cifpvilladeaguimes.es
-dn: uid=aluyeraym02,ou=asir2,dc=yeraym,dc=asir
-cn: Yeray Asir
-dn: uid=aluyeraym03,ou=asir1,dc=yeraym,dc=asir
-cn: Yeray Asir
-dn: uid=aluyeraym04,ou=asir1,dc=yeraym,dc=asir
-cn: Yeray Asir
-
-# INSTALAR Y CONFIGURAR
+![26.png](imagenes/26.png)
 
 ldapdelete: permite borrar entradas del directorio mediante un fichero o desde línea de comando.
 
-```txt
-root@yeraymUbuser21:~# ldapdelete -x -W -D 'cn=admin,dc=yeraym,dc=asir' "uid=aluyeraym04,ou=asir1,dc=yeraym,dc=asir"
-Enter LDAP Password:
-root@yeraymUbuser21:~# ldapsearch -xLLL -b "dc=yeraym,dc=asir" "uid=*" cn
-dn: uid=aluyeraym03,ou=asir1,dc=yeraym,dc=asir
-cn: Yeray Asir
-dn: uid=aluyeraym01,ou=asir2,dc=yeraym,dc=asir
-cn: Yeray Asir
-dn: uid=aluyeraym02,ou=asir2,dc=yeraym,dc=asir
-cn: Yeray Asir
-
-# INSTALAR Y CONFIGURAR
+![27.png](imagenes/27.png)
 
 Para gestionar LDAP mediante una interfaz gráfica, puedes considerar varias opciones de software que facilitan la administración de manera visual:
 
@@ -503,11 +290,9 @@ Para gestionar LDAP mediante una interfaz gráfica, puedes considerar varias opc
 - JXplorer: Herramienta Java gratuita y de código abierto que proporciona una interfaz gráfica para la administración de directorios LDAP.
 - LDAP Account Manager (LAM): Herramienta que ofrece una interfaz web para administrar cuentas y grupos en un directorio LDAP.
 
-![chunk-0-img-12.jpeg](chunk-0-img-12.jpeg)
+![28.png](imagenes/28.png)
 
-![chunk-0-img-13.jpeg](chunk-0-img-13.jpeg)
-
-# INSTALAR Y CONFIGURAR
+![29.png](imagenes/29.png)
 
 Antes de establecer conexión con el dominio se debe configurar el phpldapadmin. El archivo /etc/phpldapadmin/config.php es el archivo de configuración de phpldapadmin. El método setValue te permite configurar diversas opciones que afectan la forma en que se interactúa con tu servidor LDAP. Algunas opciones que puedes configurar utilizando setValue:
 
@@ -519,13 +304,11 @@ Antes de establecer conexión con el dominio se debe configurar el phpldapadmin.
 - 'base': Base DN para búsquedas y operaciones.
 - 'tls': Habilitar o deshabilitar TLS/SSL.
 
-![chunk-0-img-14.jpeg](chunk-0-img-14.jpeg)
+![30.png](imagenes/30.png)
 
-# INSTALAR Y CONFIGURAR
 
-![chunk-0-img-15.jpeg](chunk-0-img-15.jpeg)
-
-![chunk-0-img-16.jpeg](chunk-0-img-16.jpeg)
+![31.png](imagenes/31.png)
+![32.png](imagenes/32.png)
 
 # AÑADIR CLIENTE EN OPENLDAP
 
@@ -535,45 +318,39 @@ En Ubuntu, necesitaremos ajustar el comportamiento de los servicios NSS y PAM en
 ☐ libpam-ldap: Que facilitará la autenticación con LDAP a los usuarios que utilicen PAM.
 ☐ ldap-utils: Facilita la interacción de LDAP desde cualquier máquina de la red.
 
-root@yeraym:~# apt install libnss-ldap libpam-ldap ldap-utils -y
-
-# AÑADIR CLIENTE EN OPENLDAP
+![33.png](imagenes/33.png)
 
 En el primer paso, nos solicita la dirección URi del servidor LDAP. En nuestro caso, escribiremos la dirección IP del servidor y sustituiremos el protocolo ldapi:// por ldap://
 
-![chunk-0-img-17.jpeg](chunk-0-img-17.jpeg)
+![34.png](imagenes/34.png)
 
 En el siguiente paso, debemos indicar el nombre global único (Distinguished Name – DN).
 
 Inicialmente aparece en valor dc=example,dc=net pero nosotros lo sustituiremos por dc=nombre,dc=sistemas.
 
-![chunk-0-img-18.jpeg](chunk-0-img-18.jpeg)
+![35.png](imagenes/35.png)
 
-# AÑADIR CLIENTE EN OPENLDAP
+
 
 El asistente nos pide el número de versión del protocolo LDAP que estamos utilizando. De forma predeterminada aparece seleccionada la versión 3.
 
+![36.png](imagenes/36.png)
+
 Indicaremos si las utilidades que utilicen PAM deberán comportarse del mismo modo que cuando cambiamos contraseñas locales. Esto hará que las contraseñas se guarden en un archivo independiente que sólo podrá ser leído por el superusuario.
 
-![chunk-0-img-19.jpeg](chunk-0-img-19.jpeg)
-
-![chunk-0-img-20.jpeg](chunk-0-img-20.jpeg)
-
-# AÑADIR CLIENTE EN OPENLDAP
+![37.png](imagenes/37.png)
 
 Después, el sistema nos pregunta si queremos que sea necesario identificarse para realizar consultas en la base de datos de LDAP.
 
+![38.png](imagenes/38.png)
+
 Nombre de la cuenta LDAP que tendrá privilegios para realizar cambios en las contraseñas.
 
-![chunk-0-img-21.jpeg](chunk-0-img-21.jpeg)
-
-![chunk-0-img-22.jpeg](chunk-0-img-22.jpeg)
-
-# AÑADIR CLIENTE EN OPENLDAP
+![39.png](imagenes/39.png)
 
 La contraseña que usará la cuenta (como siempre, habrá que escribirla por duplicado para evitar errores tipográficos). Deberá coincidir con la que escribimos en el apartado Instalar OpenLDAP en el servidor.
 
-![chunk-0-img-23.jpeg](chunk-0-img-23.jpeg)
+![40.png](imagenes/40.png)
 
 Para completar la tarea, deberemos cambiar algunos parámetros en los archivos de configuración del cliente. En concreto, deberemos editar:
 
@@ -581,17 +358,13 @@ Para completar la tarea, deberemos cambiar algunos parámetros en los archivos d
 - /etc/pam.d/common-password
 - /etc/pam.d/common-session.
 
-# AÑADIR CLIENTE EN OPENLDAP
-
 /etc/nsswitch.conf
 
 Se incluyen las fuentes desde las que se obtiene la información del servicio de nombres en diferentes categorías y en qué orden. Cada categoría de información se identifica bajo un nombre.
 
 ☐ Localizamos las líneas que comienzan por passwd, group y shadow y les añadimos el texto ldap, para indicar el nuevo origen para autenticar las cuentas.
 
-![chunk-0-img-24.jpeg](chunk-0-img-24.jpeg)
-
-# AÑADIR CLIENTE EN OPENLDAP
+![41.png](imagenes/41.png)
 
 /etc/pam.d/common-password
 
@@ -599,91 +372,32 @@ Proporciona un conjunto común de reglas PAM para la comprobación de contraseñ
 
 ☐ Deberemos eliminar la opción use_authtok
 
-![chunk-0-img-25.jpeg](chunk-0-img-25.jpeg)
+![42.png](imagenes/42.png)
 
-# AÑADIR CLIENTE EN OPENLDAP
 
-## /etc/pam.d/common-sesión
+**/etc/pam.d/common-sesión**
 
 Ofrece un conjunto de reglas PAM para el inicio de sesión, tanto si éste es interactivo como si es no interactivo. Aquí será donde indiquemos que se debe crear un directorio home durante el primer inicio de sesión, también para los usuarios autenticados mediante LDAP.
 
 ☐ Este comportamiento lo conseguiremos añadiendo al final del archivo la siguiente línea:
 
-session optional pam_mkhomedir.so skel=/etc/skel umask=077
+session optional &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; pam_mkhomedir.so skel=/etc/skel umask=077
 
-```html
-|  EN | root@yeraymc -  |
-| --- | --- |
-|  GNU nano 4.8 | /etc/pam.d/common-session  |
-```
-
-```txt
-# /etc/pam.d/common-session - session-related modules common to all services
-# This file is included from other service-specific PAM config files,
-# and should contain a list of modules that define tasks to be performed
-# at the start and end of sessions of "any" kind (both interactive and
-# non-interactive).
-# As of pam 1.0.1-6, this file is managed by pam-auth-update by default.
-# To take advantage of this, it is recommended that you configure any
-# local modules either before or after the default block, and use
-# pam-auth-update to manage selection of other modules. See
-# pam-auth-update(8) for details.
-# here are the per-package modules (the "Primary" block)
-# session [default=1] pam_permit.so
-# here's the fallback if no module succeeds
-# session requisite pam_deny.so
-# prime the stack with a positive return value if there isn't one already;
-# this avoids us returning an error just because nothing sets a success code
-# since the modules above will each just jump around
-# session required pam_permit.so
-# The pam_umask module will set the umask according to the system default in
-# /etc/login.defs and user settings, solving the problem of different
-# umask settings with different shells, display managers, remote sessions etc.
-# See "man pam_umask".
-# session optional pam_umask.so
-# and here are more per-package modules (the "Additional" block)
-# session required pam_unix.so
-# session optional pam_ldap.so
-# session optional pam_systemd.so
-# session optional pam_mkhomedir.so skel=/etc/skel umask=077
-# end of pam-auth-update config
-
-# AÑADIR CLIENTE EN OPENLDAP
+![43.png](imagenes/43.png)
 
 Una vez terminada la instalación, ya podemos activar el servicio libnss-ldap.
 
-![chunk-0-img-26.jpeg](chunk-0-img-26.jpeg)
+![44.png](imagenes/44.png)
 
 La forma más sencilla de comprobar que podemos iniciar sesión en el servidor usando LDAP consiste en arrancar el sistema en modo texto (o arrancarlo en modo gráfico y usar la combinación de teclas alt + ctrl + f1 para ir a una consola de texto) y escribir las credenciales de un usuario LDAP.
 
-```bash
-root@yeraym:-\# systemctl start libnss-ldap
-root@yeraym:-\# systemctl status libnss-ldap
-@libnss-ldap.service - LSB: Updates /etc/ldap.conf
-Loaded: loaded (/etc/lnlt.d/libnss-ldap; generated)
-Active: active (exited) since Tue 2021-09-28 12:07:52 WEST; 8s ago
-Docs: man:systemd-sysv-generator(8)
-Process: 3617 ExecStart=/etc/lnlt.d/libnss-ldap start (code=exited, status=0/SUCCESS)
-sep 28 12:07:52 yeraym systemd[1]: Starting LSB: Updates /etc/ldap.conf...
-sep 28 12:07:52 yeraym systemd[1]: Started LSB: Updates /etc/ldap.conf.
-root@yeraym:~m
-```
-
-```bash
-yerayma1u08@yeraym:/$ whoami
-yerayma1u08
-yerayma1u08@yeraym:/$ _
-```
-
-#
-
-# AÑADIR CLIENTE EN OPENLDAP
+![45.png](imagenes/45.png)
 
 La mayoría de las veces necesitarás que los clientes puedan iniciar sesión en la interfaz gráfica. El problema es que el gestor de sesiones que utiliza Ubuntu es LightDM. Este es quien se encarga de presentarnos la pantalla de autenticación y, en el caso de LightDM, sólo incluye en la lista aquellos usuarios que ya conoce.
 
 Si necesitas que muchos usuarios puedan iniciar sesión en un determinado cliente, quizás la solución más sencilla consista en obligar a LightDM a preguntar por el nombre de la cuenta, antes de pedir la contraseña. Para hacer esto, debemos editar el archivo /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 
-![chunk-0-img-27.jpeg](chunk-0-img-27.jpeg)
+![47.png](imagenes/47.png)
 
 # DOMINIOS SAMBA
 
@@ -692,8 +406,6 @@ Un dominio Samba permite a un servidor Linux actuar como elemento central de aut
 A partir de Samba 4, el servicio incorpora una implementación completa de Active Directory, integrando servicios como LDAP, Kerberos y DNS dentro de una misma infraestructura. Esto permite definir un dominio en el que los usuarios y equipos se autentican contra un único punto, utilizando credenciales comunes independientemente del sistema operativo.
 
 El uso de dominios Samba es habitual en entornos corporativos donde se requiere compatibilidad con clientes Windows sin depender exclusivamente de servidores Windows. Samba permite desplegar dominios funcionales sobre Linux, manteniendo control centralizado sobre usuarios y recursos, y ofreciendo una solución flexible, escalable y alineada con estándares ampliamente utilizados en redes empresariales.
-
-# DOMINIOS SAMBA
 
 Procedimiento para implementar un Controlador de dominio en Ubuntu, donde los equipos clientes con Windows puedan iniciar sesión y utilizar sus recursos sin notar la diferencia con un servidor Windows Server. Antes de comenzar tendremos en cuenta las siguientes configuraciones bases y prepararemos el servidor para seguir con la instalación de paquetes
 
@@ -704,76 +416,26 @@ Procedimiento para implementar un Controlador de dominio en Ubuntu, donde los eq
 ☐ Dirección IP fija del servidor: 172.16.31.200
 ☐ Rol del servidor: Domain Controller (DC)
 ☐ Reenviador DNS:172.16.31.1
+![48.png](imagenes/48.png)
 
-![chunk-0-img-28.jpeg](chunk-0-img-28.jpeg)
 
-![chunk-0-img-29.jpeg](chunk-0-img-29.jpeg)
-
-# DOMINIOS SAMBA
 
 Actualizar el sistema
 
-```txt
-root@yeray-dc-smb:"# apt update 88 apt upgrade -y
-obj:1 http://es.archive.ubuntu.com/ubuntu jammy InRelease
-Res:2 http://es.archive.ubuntu.com/ubuntu jammy-updates InRelease [114 kB]
-Res:3 http://es.archive.ubuntu.com/ubuntu jammy-backports InRelease [99,8 kB]
-Res:4 http://es.archive.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
-Res:5 http://es.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [726 kB]
-Res:6 http://es.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [445 kB]
-Res:7 http://es.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [756 kB]
-descargados 2.251 kB en 5s (429 kB/s)
-leyendo lista de paquetes... Hecho
-creando árbol de dependencias... Hecho
-leyendo la información de estado... Hecho
-todos los paquetes están actualizados.
-leyendo lista de paquetes... Hecho
-creando árbol de dependencias... Hecho
-leyendo la información de estado... Hecho
-calculando la actualización... Hecho
-#
-# News about significant security updates, features and services will
-# appear here to raise awareness and perhaps tease /r/Linux ;)
-# Use 'pro config set apt_news=false' to hide this and future APT news.
-#
-# actualizados, # nuevos de Instalar@u, # para eliminar o # no actualizados.
-```
+![49.png](imagenes/49.png)
+
+
 
 Establecer un nombre adecuado para el servidor:
+**nombre-dc-smb**
 
-nombre-dc-smb
+![50.png](imagenes/50.png)
 
-```txt
-root@yeray-dc-smb:"# hostnamect1
-Static hostname: yeray-dc-smb
-Icon name: computer-vm
-Chassis: vm
-Machine ID: 5fb0d3de3b444eb97f04de29acea3cd
-Boot ID: 814254c13bb14c90a6d74475bfefcd3
-Virtualization: oracle
-Operating System: Ubuntu 22.04.1 LTS
-Kernel: Linux 5.15.0-53-generic
-Architecture: x86-64
-Hardware Vendor: innotek GmbH
-Hardware Model: VirtualBox
-root@yeray-dc-smb:"# cat /etc/hosts
-$27.0.0.1 localhost
-$27.0.1.1 yeray-dc-smb.yeray.sistemas yeray-dc-smb
-$72.16.31.200 yeray-dc-smb.yeray.sistemas yeray-dc-smb
-# The following lines are desirable for IPv6 capable hosts
-::1 ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-root@yeray-dc-smb:"#
-```
 
-# DOMINIOS SAMBA
 
 Lo siguiente será configurar las características de red según las necesidades del servidor. Recuerda que un servidor debe tener IP fija.
 
-![chunk-0-img-30.jpeg](chunk-0-img-30.jpeg)
+![51.png](imagenes/51.png)
 
 Necesitaremos disponer de los siguientes paquetes preinstalados antes de comenzar con el proceso de configuración, aunque todos ellos están en los repositorios:
 
@@ -782,9 +444,7 @@ Necesitaremos disponer de los siguientes paquetes preinstalados antes de comenza
 ☐ krb5-config: Archivos de configuración para Kerberos Version 5.
 ☐ winbind: Servicio para resolver información sobre usuarios y grupos de servidores Windows NT.
 
-![chunk-0-img-31.jpeg](chunk-0-img-31.jpeg)
-
-# DOMINIOS SAMBA
+![52.png](imagenes/52.png)
 
 ☐ En la instalación de Kerberos, nos preguntará por el reino (realm), se refiere al nombre del dominio:
 
@@ -792,98 +452,34 @@ Necesitaremos disponer de los siguientes paquetes preinstalados antes de comenza
 
 ☐ Por último, nos solicita el servidor administrativo para nuestro reino de Kerberos, como sólo tenemos uno:
 
-![chunk-0-img-32.jpeg](chunk-0-img-32.jpeg)
-
-# CONFIGURAR SAMBA
+![53.png](imagenes/53.png)
 
 Debemos cambiar de nombre el archivo smb.conf que contiene la configuración predeterminada, para evitar que Samba intente usarlo durante el proceso de configuración y estar seguros de que todos los datos del nuevo archivo de configuración se producen desde cero. Además, también podremos recuperarlo en caso de que algo salga mal.
 
-```
-root@yeray-dc-smb:~# mv /etc/samba/smb.conf /etc/samba/smb.conf.old
-root@yeray-dc-smb:~#
-```
+![54.png](imagenes/54.png)
 
 Ahora ya estamos listos para promover nuestro equipo como controlador de un dominio Samba 4 que actúe como un reemplazo completo de un servidor de dominio de Active Directory.
 
-# CONFIGURAR SAMBA
-
 Para promover nuestro equipo como controlador de un dominio lograrlo, usaremos el comando **samba-tool domain provision**, y lo haremos de forma interactiva, para que sea el propio comando el que nos sugiera sus valores predeterminados. Así, si éstos coinciden con los que nosotros esperamos, será muy probable que los pasos anteriores hayan sido los correctos.
 
-```text
-root@yeray-dc-smb:"# samba-tool domain provision
-Realm [YERAY.SISTEMAS]:
-Domain [YERAY]:
-Server Role (dc, member, standalone) [dc]:
-DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]:
-DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.53]:
-Administrator password:
-Retype password:
-```
+![55.png](imagenes/55.png)
 
-```text
-INFO 2022-11-22 12:55:03,855 pid:3055 /usr/lib/python3/dist-packages/samba/provision/_init_.py #4
-:: Server Role: active directory domain controller
-INFO 2022-11-22 12:55:03,855 pid:3055 /usr/lib/python3/dist-packages/samba/provision/_init_.py #4
-#: Hostname: yeray-dc-smb
-INFO 2022-11-22 12:55:03,855 pid:3055 /usr/lib/python3/dist-packages/samba/provision/_init_.py #4
-#: NetBIOS Domain: YERAY
-INFO 2022-11-22 12:55:03,855 pid:3055 /usr/lib/python3/dist-packages/samba/provision/_init_.py #4
-#: DNS Domain: yeray.sistemas
-INFO 2022-11-22 12:55:03,855 pid:3055 /usr/lib/python3/dist-packages/samba/provision/_init_.py #4
-#: DOMAIN SID: S-1-5-21-351225152-702372258-301823131
-root@yeray-dc-smb:"#
+![56.png](imagenes/56.png)
 
 # CONFIGURAR SAMBA
 
 Con el anterior comando se generó el archivo de configuración de Kerberos en la ruta /var/lib/samba/private/krb5.conf. Solo tenemos que copiarlo a la ubicación adecuada.
 
+![57.png](imagenes/57.png)
+
 Seguimos ajustando la resolución de nombres, y comenzaremos deteniendo los servicios implicados y deshabilitándolos para que no vuelvan a iniciarse si reiniciamos el equipo.
 
-```bash
-#qeray-dc-smb:~# cp /var/lib/samba/private/krb5.conf /etc
-#qeray-dc-smb:~#
-```
+![58.png](imagenes/58.png)
 
-```bash
-#qeray-dc-smb:~# systemctl stop smbd nmbd winbind systemd-resolved
-#qeray-dc-smb:~# systemctl disable smbd nmbd winbind systemd-resolved
-#qeray-dc-smb:~# systemctl stop smbd nmbd winbind systemd-resolved
-#qeray-dc-smb:~# /lib/systemd/systemd-sysv-install disable smbd
-#qeray-dc-smb:~# /lib/systemd/systemd-sysv-install disable nmbd
-#qeray-dc-smb:~# yuchronizing state of nmbd.service with SysV service script with /lib/systemd/systemd-sysv-install
-#qeray-dc-smb:~# executing /lib/systemd/systemd-sysv-install disable nmbd
-#qeray-dc-smb:~# yuchronizing state of winbind.service with SysV service script with /lib/systemd/systemd-sysv-install
-#:
-
-# CONFIGURAR SAMBA
 
 Aseguramos de que el servicio **samba-ad-dc** se podrá iniciar sin dificultades, evitando cualquier enmascaramiento que pueda existir y eliminamos el archivo **resolv.conf** que, en realidad, será un enlace a `../run/systemd/resolve/stub-resolv.conf` y generamos uno nuevo con escribiremos los valores adecuados para nuestro dominio y por último activamos el servicio:
 
-```shell
-root@yeray-dc-smb:~# systemctl unmask samba-ad-dc
-Removed /etc/systemd/system/samba-ad-dc.service.
-root@yeray-dc-smb:~# ls -l /etc/resolv.conf
-Inuxrwxrwx 1 root root 39 ago 9 12:56 /etc/resolv.conf -&gt; ../run/systemd/resolve/stub-resolv.conf
-root@yeray-dc-smb:~# rm /etc/resolv.conf
-root@yeray-dc-smb:~# nano_/etc/resolv.conf
-```
-
-```txt
-GNU nano 6.2 /etc/resolv.conf *
-domain yeray.sistemas
-nameserver 127.0.0.1_
-```
-
-```shell
-root@yeray-dc-smb:~# systemctl start samba-ad-dc
-root@yeray-dc-smb:~# systemctl enable samba-ad-dc
-Synchronizing state of samba-ad-dc.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable samba-ad-dc
-Created symlink /etc/systemd/system/multi-user.target.wants/samba-ad-dc.service + /lib/systemd/system/samba-ad-dc.service.
-root@yeray-dc-smb:~#
-```
-
-# COMPROBAR DOMINIO SAMBA
+![59.png](imagenes/59.png)
 
 Una vez finalizada la instalación vamos a proceder a la comprobación del dominio de Samba realizando las siguientes tareas:
 
@@ -899,19 +495,7 @@ Una vez finalizada la instalación vamos a proceder a la comprobación del domin
 
 ☐ A continuación, crearemos un nuevo usuario en el dominio llamado nombre01.
 
-```txt
-root@yeray-dc-smb:~# samba-tool domain level show
-Domain and forest function level for domain 'DC=yeray,DC=sistemas'
-Forest function level: (Windows) 2008 R2
-Domain function level: (Windows) 2008 R2
-Lowest function level of a DC: (Windows) 2008 R2
-root@yeray-dc-smb:~# samba-tool user create yeray01
-New Password:
-Retype Password:
-User 'yeray01' added successfully
-root@yeray-dc-smb:~#
-
-# COMPROBAR DOMINIO SAMBA
+![60.png](imagenes/60.png)
 
 Comprobaciones del servidor DNS interno del propio Samba, mas concretamente de los registros SRV encargados de almacenar, dentro de la base de datos DNS, la relación entre el nombre de un servicio y el nombre DNS del ordenador que ofrece dicho servicio.
 
@@ -919,65 +503,21 @@ Comprobaciones del servidor DNS interno del propio Samba, mas concretamente de l
 ☐ Comprobar el registro SRV para el protocolo Kerberos sobre UDP.
 ☐ Comprobar la resolución del nombre de nuestro servidor.
 
-```
-root@yeray-dc-smb:~# host -t SRV _ldap._tcp.yeray.sistemas
-_ldap._tcp.yeray.sistemas has SRV record 0 100 389 yeray-dc-smb.yeray.sistemas.
-root@yeray-dc-smb:~# host -t SRV _kerberos._udp.yeray.sistemas
-_kerberos._udp.yeray.sistemas has SRV record 0 100 88 yeray-dc-smb.yeray.sistemas.
-root@yeray-dc-smb:~# host -t A yeray-dc-smb.yeray.sistemas
-yeray-dc-smb.yeray.sistemas has address 172.16.31.200
-
-# COMPROBAR DOMINIO SAMBA
+![61.png](imagenes/61.png)
 
 Ahora nos aseguramos de que se resuelven correctamente los nombres y las IPs del dominio. Al ejecutar nslookup sin argumentos, aparece un signo ‘mayor que’ a modo de prompt, donde podemos ir escribiendo argumentos.
 
-```txt
-root@yeray-dc-smb:^# nslookup
-&gt; server 172.16.31.200
-Default server: 172.16.31.200
-Address: 172.16.31.200#53
-&gt; set type=SRV
-&gt; _ldap._tcp.yeray.sistemas
-Server: 172.16.31.200
-Address: 172.16.31.200#53
-_ldap._tcp.yeray.sistemas service = 0 100 389 yeray-dc-smb.yeray.sistemas.
-&gt; exit
-
-# COMPROBAR DOMINIO SAMBA
+![62.png](imagenes/62.png)
 
 Para comprobar el funcionamiento de Kerberos podemos usar el comando smbclient para comprobar los servicios que puede obtener un determinado usuario.
 
-```bash
-root@yeray-dc-smb:~# smbclient -L yeray-dc-smb.yeray.sistemas -U 'administrator'
-Password for [YERAY\administrator]:
-
-# COMPROBAR DOMINIO SAMBA
+![63.png](imagenes/63.png)
 
 Comprobar el inicio de sesión en el servidor verificando la integridad del archivo de configuración de Samba con el comando testparm
 
-```bash
-root@yeray-dc-smb:~# smbclient //localhost/netlogon -U 'administrator'
-Password for [YERAY\administrator]:
-Try "help" to get a list of possible commands.
-smb: \&gt; ls
-. D 0 Tue Nov 22 12:54:20 2022
-. D 0 Tue Nov 22 12:54:22 2022
-50254368 blocks of size 1024. 39725420 blocks available
-smb: \&gt; exit
-root@yeray-dc-smb:~# testparm
-Load smb config files from /etc/samba/smb.conf
-Loaded services file OK.
-Weak crypto is allowed
-Server role: ROLE_ACTIVE_DIRECTORY_DC
-Press enter to see a dump of your service definitions
+![64.png](imagenes/64.png)
 
-# COMPROBAR DOMINIO SAMBA
-
-![chunk-0-img-33.jpeg](chunk-0-img-33.jpeg)
-
-![chunk-0-img-34.jpeg](chunk-0-img-34.jpeg)
-
-![chunk-0-img-35.jpeg](chunk-0-img-35.jpeg)
+![65.png](imagenes/65.png)
 
 
 
