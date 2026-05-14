@@ -7,6 +7,7 @@
 5. [Dominios Samba](#dominios-samba)
 6. [Configurar Samba](#configurar-samba)
 7. [Comprobar dominio Samba](#comprobar-dominio-samba)
+
 ![1.png](imagenes/1.png)
 
 # DOMINIOS
