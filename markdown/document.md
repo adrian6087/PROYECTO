@@ -258,8 +258,8 @@ A continuación, añadir la información a la base de datos OpenLDAP. Esto se ha
 
 A continuación, añadimos algunos usuarios más:
 
-![20.png](imagenes/20.png) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ![21.png](imagenes/21.png)
-
+![20.png](imagenes/20.png) 
+![21.png](imagenes/21.png)
 
 ## Comprobaciones:
 
