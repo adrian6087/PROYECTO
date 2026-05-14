@@ -18,13 +18,13 @@ Un dominio, en términos generales, no es más que un conjunto de sistemas, usua
 
 Resumiendo, en Linux no se “instala un dominio”, sino que se diseña y se construye, obligando a entender qué hace cada servicio, cómo se comunica con los demás y qué papel juega dentro de la arquitectura global.
 
-# DOMINIOS
+
 
 En un sistema local, los usuarios están definidos en /etc/passwd, las contraseñas (o hashes) en /etc/shadow, los grupos en /etc/group, y los permisos se gestionan directamente en el sistema de archivos. Este modelo funciona perfectamente para un número muy reducido de máquinas, pero se vuelve ineficiente y difícil de mantener en cuanto el número de sistemas crece.
 
 Crear usuarios manualmente en cada máquina, mantener contraseñas sincronizadas, asegurar que los permisos son coherentes y revocar accesos cuando un usuario deja la organización se convierte rápidamente en una tarea poco realista. Aquí es donde aparece la necesidad de un dominio. Este permite centralizar la información de usuarios y grupos, de modo que las máquinas cliente no almacenan esa información localmente, sino que la consultan a un servicio central. Esto implica que un usuario puede iniciar sesión en diferentes equipos con las mismas credenciales, que los cambios se aplican de forma inmediata y que la administración se simplifica enormemente.
 
-# DOMINIOS
+
 
 El DNS es la base sobre la que se apoyan prácticamente todos los servicios de red. Cuando hablamos de un dominio como sistemas.local, estamos definiendo un ámbito dentro del cual los nombres de máquinas, servicios y recursos tienen significado. En un entorno de dominio Linux, el DNS no solo sirve para traducir nombres a direcciones IP, sino también para localizar servicios, especialmente cuando se utilizan tecnologías como LDAP o Kerberos.
 
@@ -53,7 +53,7 @@ Con **arquitectura** LDAP, nos referimos a cómo se organizan los distintos comp
 
 ☐ El DNS juega un papel estructural, ya que permite localizar los servicios del dominio de forma dinámica y coherente. En arquitecturas bien diseñadas, los clientes no se configuran con direcciones IP “a mano”, sino que descubren los servicios mediante nombres de dominio.
 
-# LDAP Arquitectura
+**LDAP Arquitectura**
 
 En los sistemas cliente, la arquitectura se completa con componentes de capas de autenticación y de integración entre el sistema operativo y el dominio como NSS y PAM.
 
@@ -61,7 +61,7 @@ La idea consiste en disponer de un servidor que facilite la autenticación de lo
 
 ![3.png](imagenes/3.png)
 
-# LDAP Arquitectura
+
 
 NSS (Name Service Switch) mecanismo que utiliza Linux para localizar información de usuarios y grupos. Permite al sistema saber si un usuario existe y obtener sus datos (UID, GID, directorio personal, etc.), consultando distintas fuentes como archivos locales o un servidor LDAP. En un entorno con LDAP, NSS se encarga de “preguntar” al directorio por los usuarios en lugar de buscarlos solo en el sistema local.
 
@@ -73,7 +73,7 @@ Es el método que utilizan la mayoría de las aplicaciones y herramientas de Lin
 
 ![5.png](imagenes/5.png)
 
-# LDAP Arquitectura
+
 
 Una de las ventajas que aporta LDAP cuando lo combinamos con NFS es que podemos guardar el perfil de una cuenta de usuario en el servidor NFS. De este modo, cuando un usuario se autentica en cualquier equipo de la red usando su cuenta LDAP, podrá acceder de forma automática a una carpeta compartida donde se guardan los perfiles de las cuentas. (Perfiles móviles de usuario)
 
@@ -87,9 +87,9 @@ A continuación, se muestran los pasos a seguir
 4. Crear una carpeta en los equipos cliente para montar los perfiles móviles (el equivalente a /home/usuario de cada usuario en cada cliente).
 5. Modificar el archivo /etc/fstab de cada cliente para que monte la carpeta que hemos creado en el paso 1 en el punto de montaje establecido en el paso 4 y reiniciar el equipo.
 
-# LDAP
 
-## CARACTERÍSTICAS
+
+**CARACTERÍSTICAS**
 
 ☐ Centralización. Todos los usuarios y grupos se gestionan desde un único punto, lo que reduce errores, simplifica tareas y mejora la trazabilidad. Cualquier cambio en el directorio se refleja inmediatamente en todos los sistemas integrados, sin necesidad de intervención manual en cada equipo.
 
@@ -101,7 +101,7 @@ A continuación, se muestran los pasos a seguir
 
 ☐ Coherencia de identidad. Cada usuario tiene un único identificador dentro del dominio, lo que evita problemas habituales como duplicidades de UID o inconsistencias en permisos.
 
-## USOS
+**USOS**
 
 ☐ Gestión centralizada de usuarios en entornos Linux. En aulas, centros educativos o empresas con múltiples equipos, un dominio LDAP permite que el alumnado o el personal utilice las mismas credenciales en cualquier máquina, manteniendo su entorno de trabajo y sus permisos.
 
@@ -111,9 +111,8 @@ A continuación, se muestran los pasos a seguir
 
 ☐ En el ámbito empresarial, como base para infraestructuras híbridas, donde conviven distintos sistemas y tecnologías. LDAP actúa como nexo común, permitiendo que la identidad del usuario sea reconocida y validada en todos los servicios de la organización.
 
-# LDAP
 
-## Versiones de LDAP:
+**Versiones de LDAP**
 
 ☐ LDAPv1: Fue la primera versión del protocolo, pero resultó ser poco práctica debido a limitaciones y falta de características clave. No se utilizó ampliamente en la implementación.
 
@@ -127,7 +126,7 @@ A continuación, se muestran los pasos a seguir
 - Soporte para extensiones, lo que permitió a los desarrolladores agregar funcionalidad adicional al protocolo.
 - Esquema mejorado para describir los tipos de datos y atributos.
 
-LDAP estructura
+**LDAP estructura**
 
 LDAP utiliza una estructura jerárquica en forma de árbol, conocida como DIT (Directory Information Tree).
 
@@ -139,7 +138,7 @@ Este modelo jerárquico encaja muy bien con la idea de dominio, ya que refleja l
 
 ![7.png](imagenes/7.png)
 
-# LDAP Identificadores
+**LDAP Identificadores**
 
 ☐ DC (Domain Component) representa una parte del nombre de dominio. Cada DC corresponde a un nivel del dominio DNS. Por ejemplo, en dc=asir,dc=local, asir y local son componentes del dominio. Los DC suelen utilizarse para definir la base del directorio y su correspondencia con el dominio de red.
 
@@ -152,7 +151,7 @@ Este modelo jerárquico encaja muy bien con la idea de dominio, ya que refleja l
 - Están definidos por los esquemas LDAP, que establecen qué atributos son obligatorios y cuáles son opcionales para cada tipo de objeto. Por ejemplo, un usuario de tipo posixAccount debe tener un UID y un GID, mientras que otros atributos pueden ser opcionales.
 - Están asociados directamente al objeto dentro del DIT. No existen de forma independiente.
 
-# LDAP
+
 
 LDIF (LDAP Data Interchange Format) es un formato de archivo de texto utilizado para representar y transferir datos en sistemas que utilizan el protocolo LDAP.
 
@@ -164,7 +163,7 @@ Su importancia radica en que permite trabajar con LDAP de forma reproducible y a
 
 ![9.png](imagenes/9.png)
 
-# LDAP
+
 
 LDAP es un protocolo, es decir, un conjunto de normas que define cómo se accede a un servicio de directorio, no es un software que se instale. OpenLDAP, en cambio, es una implementación concreta de ese protocolo.
 
@@ -202,6 +201,7 @@ https://www.openldap.org/
 |  ldapurl | Convierte una URL LDAP en un nombre de objeto LDAP.  |
 |  ldapschema | Obtiene el esquema de un servidor LDAP.  |
 
+# INSTALAR Y CONFIGURAR
 
 Instalaremos los siguientes paquetes:
 
