@@ -1,6 +1,6 @@
 # 5.2 SERVICIO DE DIRECTORIO DE LINUX
 
-1. Dominios
+1. [Dominios] (# DOMINIOS)
 2. LDAP
 3. Instalar y configurar
 4. Añadir cliente en OpenLDAP
